@@ -2,21 +2,22 @@
 #include "Global.hpp"
 
 void Renderer::clear() {
+    Renderer::setDrawColor({30, 30, 30});
     SDL_RenderClear(global::renderer);
 }
 
-void Renderer::setDrawColor(uint8_t r, uint8_t g, uint8_t b) {
-    SDL_SetRenderDrawColor(global::renderer, r, g, b, 255);
+void Renderer::setDrawColor(Color color) {
+    SDL_SetRenderDrawColor(global::renderer, color.r, color.g, color.b, color.a);
 }
 
-void Renderer::drawRect(float x, float y, float w, float h, uint8_t r, uint8_t g, uint8_t b) {
-    Renderer::setDrawColor(r, g, b);
+void Renderer::drawRect(float x, float y, float w, float h, Color color) {
+    Renderer::setDrawColor(color);
     SDL_FRect rect{x, y, w, h};
     SDL_RenderFillRect(global::renderer, &rect);
 }
 
-void Renderer::drawCircle(float x, float y, float radius, uint8_t r, uint8_t g, uint8_t b) {
-    Renderer::setDrawColor(r, g, b);
+void Renderer::drawCircle(float x, float y, float radius, Color color) {
+    Renderer::setDrawColor(color);
     
     const int32_t diameter = (radius * 2);
 
@@ -52,8 +53,8 @@ void Renderer::drawCircle(float x, float y, float radius, uint8_t r, uint8_t g, 
 }
 
 // https://gist.github.com/Gumichan01/332c26f6197a432db91cc4327fcabb1c
-void Renderer::fillCircle(float x, float y, float radius, uint8_t r, uint8_t g, uint8_t b) {
-    Renderer::setDrawColor(r, g, b);
+void Renderer::fillCircle(float x, float y, float radius, Color color) {
+    Renderer::setDrawColor(color);
 
     int offsetx = 0;
     int offsety = radius;

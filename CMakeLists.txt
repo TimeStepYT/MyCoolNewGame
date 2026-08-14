@@ -4,10 +4,11 @@ set(CMAKE_CXX_STANDARD 23)
 
 project(Balls)
 
-add_executable(Balls WIN32
+add_executable(Balls
     src/main.cpp
     src/Game.cpp
     src/Renderer.cpp
+    src/Circle.cpp
 )
 
 set_target_properties(Balls PROPERTIES 
