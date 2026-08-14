@@ -9,6 +9,7 @@ add_executable(Balls
     src/Game.cpp
     src/Renderer.cpp
     src/Circle.cpp
+    src/Mouse.cpp
 )
 
 set_target_properties(Balls PROPERTIES 
