@@ -11,7 +11,7 @@ void Renderer::setDrawColor(uint8_t r, uint8_t g, uint8_t b) {
 
 void Renderer::drawRect(float x, float y, float w, float h, uint8_t r, uint8_t g, uint8_t b) {
     Renderer::setDrawColor(r, g, b);
-    SDL_FRect rect = {x, y, w, h};
+    SDL_FRect rect{x, y, w, h};
     SDL_RenderFillRect(global::renderer, &rect);
 }
 
@@ -73,7 +73,7 @@ void Renderer::fillCircle(float x, float y, float radius, uint8_t r, uint8_t g, 
 
         if (d >= 2 * offsetx) {
             d -= 2 * offsetx + 1;
-            offsetx +=1 ;
+            offsetx += 1;
         }
         else if (d < 2 * (radius - offsety)) {
             d += 2 * offsety - 1;
