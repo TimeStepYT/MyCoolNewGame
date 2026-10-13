@@ -21,11 +21,11 @@ public:
     Mouse(Mouse const&) = delete;
     static Mouse& get();
 
-    Position getPosition();
+    Position getPosition() const;
     void setPosition(Position pos);
     void setClicked(MouseButtonID buttonID);
     void setNotClicked(MouseButtonID buttonID);
-    bool isDown(MouseButtonID buttonID = MouseButtonID::LEFT);
-    bool isClicked(MouseButtonID buttonID = MouseButtonID::LEFT);
+    bool isDown(MouseButtonID buttonID = MouseButtonID::LEFT) const;
+    bool isClicked(MouseButtonID buttonID = MouseButtonID::LEFT) const;
     void update();
 };

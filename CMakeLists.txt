@@ -1,13 +1,15 @@
-cmake_minimum_required(VERSION 3.10)
+cmake_minimum_required(VERSION 3.15)
 
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED true)
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/${CMAKE_BUILD_TYPE})
 
-project(Balls)
+set(CMAKE_MSVC_RUNTIME_LIBRARY)
 
-add_executable(Balls
+project(MyCoolNewGame)
+
+add_executable(MyCoolNewGame
     src/main.cpp
     src/Game.cpp
     src/Renderer.cpp
@@ -15,9 +17,13 @@ add_executable(Balls
     src/Mouse.cpp
 )
 
-set_target_properties(Balls PROPERTIES 
-    WIN32_EXECUTABLE TRUE
-)
+if (WIN32)
+    set_target_properties(MyCoolNewGame PROPERTIES 
+        WIN32_EXECUTABLE TRUE
+    )
+    set_property(TARGET MyCoolNewGame PROPERTY
+        MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
+endif()
 
 find_package(SDL3 QUIET)
 
@@ -27,4 +33,4 @@ if (NOT SDL3_FOUND)
     CPMAddPackage("gh:libsdl-org/SDL#release-3.4.14")
 endif()
 
-target_link_libraries(Balls PRIVATE SDL3::SDL3)
+target_link_libraries(MyCoolNewGame PRIVATE SDL3::SDL3)

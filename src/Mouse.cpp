@@ -16,7 +16,7 @@ void Mouse::setPosition(Position pos) {
     this->m_pos = pos;
 }
 
-Position Mouse::getPosition() {
+Position Mouse::getPosition() const {
     return this->m_pos;
 }
 
@@ -36,11 +36,11 @@ void Mouse::setNotClicked(MouseButtonID buttonID) {
     this->m_buttonsDown.erase(it);
 }
 
-bool Mouse::isDown(MouseButtonID buttonID) {
+bool Mouse::isDown(MouseButtonID buttonID) const {
     return contains(this->m_buttonsDown, buttonID);
 }
 
-bool Mouse::isClicked(MouseButtonID buttonID) {
+bool Mouse::isClicked(MouseButtonID buttonID) const {
     return contains(this->m_freshButtonsDown, buttonID);
 }
 
